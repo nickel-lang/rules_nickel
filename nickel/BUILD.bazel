@@ -13,7 +13,7 @@ config_setting(
 genrule(
     name = "nickel",
     srcs = select({
-        "//nickel:linux_x86_64": ["@nickel_linux_x86_64//file"]
+        "//nickel:linux_x86_64": ["nickel-x86_64"] #["@nickel_linux_x86_64//file"]
     }),
     outs = ["bin/nickel"],
     cmd = "cp $(<) $(@)",
