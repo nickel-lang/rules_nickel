@@ -7,12 +7,38 @@ def _nickel_export_impl(ctx):
     ]
 
     ctx.actions.run(
-        inputs = [ctx.file.src],
+        inputs = [ctx.file.src] + ctx.files.deps,
         outputs = [ctx.outputs.out],
         arguments = args,
         progress_message = "Exporting %s" % ctx.outputs.out.short_path,
         executable = ctx.executable._nickel,
     )
+
+# def _nickel_export(ctx):
+#     args = ctx.actions.args()
+
+#     args.add(ctx.executable._nickel.path)
+#     args.add("--file")
+#     args.add(ctx.file.src)
+#     args.add("--format")
+#     args.add(ctx.attr.output_format)
+#     args.add("--output")
+#     args.add(ctx.outputs.export.path)
+
+#     ctx.actions.run_shell(
+#         mnemonic = "NickelExport",
+#         tools = [ctx.excecutable._nickel],
+#         arguments = [args],
+#         command = """
+#             set -euo pipefail
+#             NICKEL=$1; shift
+
+#             ${NICKEL} $@
+#         """,
+#         inputs = [ctx.file],
+#         outputs = [ctx.outputs.export],
+#         use_default_shell_env = True,
+#     )
 
 _nickel_export_attrs = {
     "out": attr.output(
