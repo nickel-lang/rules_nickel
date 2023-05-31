@@ -2,8 +2,9 @@ load("@com_github_tweag_rules_nickel//nickel:nickel.bzl", "nickel_export")
 
 nickel_export(
     name = "hello",
+    out = "hello.json",
     src = "hello.ncl",
-    output_name = "hello.json",
-    output_format = "json",
+    deps = glob(include=["*.ncl"]),
+    format = "json",
     visibility = ["//visibility:public"],
 )

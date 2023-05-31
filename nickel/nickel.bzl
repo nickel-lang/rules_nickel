@@ -1,23 +1,33 @@
-def _nickel_export(ctx):
-    fail("TODO: nickel_export")
+def _nickel_export_impl(ctx):
+    args = [
+        "export",
+        "--file", ctx.file.src.path,
+        "--format", ctx.attr.format,
+        "--output", ctx.outputs.out.path,
+    ]
 
-def _nickel_export_outputs(src, output_name, output_format):
-    outputs = {
-        "export": output_name
-    }
-    return outputs
+    ctx.actions.run(
+        inputs = [ctx.file.src],
+        outputs = [ctx.outputs.out],
+        arguments = args,
+        progress_message = "Exporting %s" % ctx.outputs.out.short_path,
+        executable = ctx.executable._nickel,
+    )
 
 _nickel_export_attrs = {
+    "out": attr.output(
+        mandatory = True,
+    ),
     "src": attr.label(
-        doc = "Nickel file to export",
+        doc = "Top-level Nickel file to export from",
         mandatory = True,
         allow_single_file = [".ncl"],
     ),
-    "output_name": attr.string(
-        doc = "Name of the output file",
-        mandatory = True,
+    "deps": attr.label_list(
+        doc = "Nickel files required by the top-level file",
+        allow_files = [".ncl"]
     ),
-    "output_format": attr.string(
+    "format": attr.string(
         doc = "Output format",
         default = "json",
         values = [
@@ -27,10 +37,15 @@ _nickel_export_attrs = {
             "raw"
         ]
     ),
+    "_nickel": attr.label(
+        default = Label("//nickel:nickel"),
+        executable = True,
+        allow_single_file = True,
+        cfg = "exec"
+    )
 }
 
 nickel_export = rule(
-    implementation = _nickel_export,
+    implementation = _nickel_export_impl,
     attrs = _nickel_export_attrs,
-    outputs = _nickel_export_outputs,
 )
