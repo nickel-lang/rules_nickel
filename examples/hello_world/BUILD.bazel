@@ -1,4 +1,4 @@
-load("@com_github_tweag_rules_nickel//nickel:nickel.bzl", "nickel_export")
+load("@com_github_nickel_lang_rules_nickel//nickel:nickel.bzl", "nickel_export")
 
 nickel_export(
     name = "hello",
