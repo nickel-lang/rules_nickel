@@ -14,10 +14,8 @@
           packages = with pkgs; [
             bazel_6
             bazel-buildtools
+            pre-commit
             cacert
-            gcc
-            nix
-            git
           ];
         };
       });

@@ -1,22 +1,52 @@
-package(default_visibility = ["//visibility:public"])
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("//nickel/private:resolved_toolchain.bzl", "resolved_toolchain")
 
-exports_files(glob(["*.bzl"]))
+# For stardoc to reference the files
+exports_files(["defs.bzl"])
 
-config_setting(
-    name = "linux_x86_64",
-    constraint_values = [
-        "@platforms//os:linux",
-        "@platforms//cpu:x86_64",
-    ]
+# This is the target rule authors should put in their "toolchains"
+# attribute in order to get a runtime for the correct platform.
+# See https://docs.bazel.build/versions/main/toolchains.html#writing-rules-that-use-toolchains
+toolchain_type(
+    name = "toolchain_type",
+    visibility = ["//visibility:public"],
 )
 
-genrule(
-    name = "nickel",
-    srcs = select({
-        "//nickel:linux_x86_64": ["nickel-x86_64"] #["@nickel_linux_x86_64//file"]
-    }),
-    outs = ["bin/nickel"],
-    cmd = "cp $(<) $(@)",
-    executable = True,
-    output_to_bindir = 1,
+resolved_toolchain(
+    name = "resolved_toolchain",
+    # Marked manual so that `bazel test //...` passes
+    # even if no toolchain is registered.
+    tags = ["manual"],
+    visibility = ["//visibility:public"],
+)
+
+bzl_library(
+    name = "repositories",
+    srcs = ["repositories.bzl"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//nickel/private:toolchains_repo",
+        "//nickel/private:versions",
+        "@bazel_tools//tools/build_defs/repo:http.bzl",
+        "@bazel_tools//tools/build_defs/repo:utils.bzl",
+    ],
+)
+
+bzl_library(
+    name = "defs",
+    srcs = ["defs.bzl"],
+    visibility = ["//visibility:public"],
+)
+
+bzl_library(
+    name = "extensions",
+    srcs = ["extensions.bzl"],
+    visibility = ["//visibility:public"],
+    deps = [":repositories"],
+)
+
+bzl_library(
+    name = "toolchain",
+    srcs = ["toolchain.bzl"],
+    visibility = ["//visibility:public"],
 )
