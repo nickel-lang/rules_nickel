@@ -16,7 +16,7 @@ _DEFAULT_NAME = "nickel"
 
 nickel_toolchain = tag_class(attrs = {
     "name": attr.string(doc = """\
-Base name for generated repositories, allowing more than one mylang toolchain to be registered.
+Base name for generated repositories, allowing more than one nickel toolchain to be registered.
 Overriding the default is only permitted in the root module.
 """, default = _DEFAULT_NAME),
     "nickel_version": attr.string(doc = "Explicit version of Nickel.", mandatory = True),
@@ -28,7 +28,7 @@ def _toolchain_extension(module_ctx):
         for toolchain in mod.tags.toolchain:
             if toolchain.name != _DEFAULT_NAME and not mod.is_root:
                 fail("""\
-                Only the root module may override the default name for the mylang toolchain.
+                Only the root module may override the default name for the nickel toolchain.
                 This prevents conflicting registrations in the global namespace of external repos.
                 """)
             if toolchain.name not in registrations.keys():
