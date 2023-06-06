@@ -10,6 +10,6 @@ build_test(
     name = "smoke_test",
     targets = [
         # targets you add above
-        ":export_test",
+        ":test.json",
     ],
 )
