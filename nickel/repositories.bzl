@@ -78,6 +78,7 @@ def nickel_register_toolchains(name, nickel_version, register = True, **kwargs):
     Users can avoid this macro and do these steps themselves, if they want more control.
     Args:
         name: base name for all created repos, like "nickel1_0_0"
+        nickel_version: the specific Nickel version to use, e.g. "1.0.0"
         register: whether to call through to native.register_toolchains.
             Should be True for WORKSPACE users, but false when used under bzlmod extension
         **kwargs: passed to each node_repositories call

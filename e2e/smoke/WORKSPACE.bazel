@@ -19,4 +19,8 @@ local_repository(
 load("@org_nickel_lang_rules_nickel//nickel:repositories.bzl", "nickel_register_toolchains", "rules_nickel_dependencies")
 
 rules_nickel_dependencies()
-nickel_register_toolchains(name = "nickel1_0_0", nickel_version = "1.0.0")
+
+nickel_register_toolchains(
+    name = "nickel1_0_0",
+    nickel_version = "1.0.0",
+)
