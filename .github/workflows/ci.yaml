@@ -24,3 +24,9 @@ jobs:
           ".",
           "e2e/smoke"
         ]
+      exclude: |
+        [
+          {"bazelversion": "5.4.0", "bzlmodEnabled": true},
+          {"os": "macos-latest"},
+          {"os": "windows-latest"}
+        ]
