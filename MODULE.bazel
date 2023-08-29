@@ -1,4 +1,4 @@
-"Bazel dependencies"
+"bzlmod declaration for rules_nickel"
 
 module(
     name = "org_nickel_lang_rules_nickel",
@@ -9,15 +9,16 @@ module(
 bazel_dep(name = "bazel_skylib", version = "1.4.1")
 bazel_dep(name = "platforms", version = "0.0.5")
 
-bazel_dep(name = "rules_python", version = "0.25.0")
+bazel_dep(name = "rules_python", version = "0.25.0", dev_dependency = True)
+bazel_dep(name = "rules_python_gazelle_plugin", version = "0.25.0", dev_dependency = True)
 
-python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python = use_extension("@rules_python//python/extensions:python.bzl", "python", dev_dependency = True)
 python.toolchain(
     python_version = "3.11",
     is_default = True,
 )
 
-pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip", dev_dependency = True)
 pip.parse(
     hub_name = "pip",
     python_version = "3.11",
