@@ -15,5 +15,5 @@ py_binary(
     ],
     deps = [
         requirement("requests"),
-    ]
+    ],
 )
