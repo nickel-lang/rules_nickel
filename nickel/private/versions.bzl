@@ -1,12 +1,28 @@
-"""Mirror of release info
 
-TODO: generate this file from GitHub API"""
+"""DO NOT EDIT
 
-# The integrity hashes can be computed with
-# shasum -b -a 384 [downloaded file] | cut -f1 -d' ' | xxd -r -p | base64
+Generated from https://github.com/tweag/nickel/releases using `bazel run //nickel/private:versions.update`
+"""
+
 TOOL_VERSIONS = {
+    "1.1.1": {
+        "nickel-arm64-linux": {
+            "url": "https://github.com/tweag/nickel/releases/download/1.1.1/nickel-arm64-linux",
+            "hash": "sha384-PZ5bOlQPBLo92Va9oapsRsEnM1j69VjJBwvtt4pnafut52eMpBxE3Qwbi5KDj/ef",
+        },
+        "nickel-x86_64-linux": {
+            "url": "https://github.com/tweag/nickel/releases/download/1.1.1/nickel-x86_64-linux",
+            "hash": "sha384-v745PGKNgZjRqzZw/c0229+HbBuf1ctjy6nPF4soX61vDBgJqBntxnpycR46pom3",
+        },
+    },
     "1.0.0": {
-        "x86_64-linux": "sha384-67Pnn8Bukc6vVcL/KCojkqr4d/5p9CMRsXXcyHLFDMlVO7LP/FczKh7oCYarcgdA",
-        "arm64-linux": "sha384-7kuG+8lai0+lGs/NvvQK/0EAojNfRf4GLGYmRzROSiEXN8I1nVAAkX3bhwmMtr5j",
+        "nickel-arm64-linux": {
+            "url": "https://github.com/tweag/nickel/releases/download/1.0.0/nickel-arm64-linux",
+            "hash": "sha384-7kuG+8lai0+lGs/NvvQK/0EAojNfRf4GLGYmRzROSiEXN8I1nVAAkX3bhwmMtr5j",
+        },
+        "nickel-x86_64-linux": {
+            "url": "https://github.com/tweag/nickel/releases/download/1.0.0/nickel-x86_64-linux",
+            "hash": "sha384-67Pnn8Bukc6vVcL/KCojkqr4d/5p9CMRsXXcyHLFDMlVO7LP/FczKh7oCYarcgdA",
+        },
     },
 }

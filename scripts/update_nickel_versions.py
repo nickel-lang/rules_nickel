@@ -44,7 +44,7 @@ for release, assets in nickel_urls.items():
 print('''
 """DO NOT EDIT
 
-Generated from https://github.com/tweag/nickel/releases using `bazel run //scripts:update_nickel_versions`
+Generated from https://github.com/tweag/nickel/releases using `bazel run //nickel/private:versions.update`
 """
 
 TOOL_VERSIONS = {''')
