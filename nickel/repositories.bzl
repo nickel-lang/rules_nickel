@@ -43,10 +43,6 @@ _ATTRS = {
 }
 
 def _nickel_repo_impl(repository_ctx):
-    url = "https://github.com/tweag/nickel/releases/download/{0}/nickel-{1}".format(
-        repository_ctx.attr.nickel_version,
-        repository_ctx.attr.platform,
-    )
     artifact = TOOL_VERSIONS[repository_ctx.attr.nickel_version]["nickel-{0}".format(repository_ctx.attr.platform)]
     repository_ctx.download(
         url = artifact["url"],
@@ -58,6 +54,7 @@ def _nickel_repo_impl(repository_ctx):
 load("@org_nickel_lang_rules_nickel//nickel:toolchain.bzl", "nickel_toolchain")
 nickel_toolchain(name = "nickel_toolchain", nickel = "nickel")
 """
+
     # Base BUILD file for this repository
     repository_ctx.file("BUILD.bazel", build_content)
 
