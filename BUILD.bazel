@@ -1,0 +1,17 @@
+load("@buildifier_prebuilt//:rules.bzl", "buildifier", "buildifier_test")
+
+buildifier(
+    name = "buildifier",
+    exclude_patterns = ["./.git/*"],
+    lint_mode = "warn",
+    mode = "fix",
+)
+
+buildifier_test(
+    name = "buildifier.test",
+    srcs = glob([
+        "**/BUILD.bazel",
+        "**/*.bzl",
+    ]),
+    lint_mode = "warn",
+)
