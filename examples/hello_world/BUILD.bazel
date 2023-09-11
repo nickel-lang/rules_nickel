@@ -1,8 +1,16 @@
 load("@org_nickel_lang_rules_nickel//nickel:defs.bzl", "nickel_export")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_file")
 
 nickel_export(
-    name = "hello.json",
+    name = "hello.json.write",
     src = "hello.ncl",
     format = "json",
     deps = glob(include = ["*.ncl"]),
+)
+
+write_source_file(
+    name = "hello.json.update",
+    in_file = ":hello.json.write",
+    out_file = "hello.json",
+    suggested_update_target = "//:hello.json.update",
 )
