@@ -22,7 +22,8 @@ jobs:
       folders: |
         [
           ".",
-          "e2e/smoke"
+          "e2e/smoke",
+          "examples/hello_world"
         ]
       exclude: |
         [
