@@ -1,4 +1,3 @@
-
 """DO NOT EDIT
 
 Generated from https://github.com/tweag/nickel/releases using `bazel run //nickel/private:versions.update`

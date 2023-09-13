@@ -21,10 +21,13 @@ bzl_library(
 
 genrule(
     name = "versions.write",
-    tools = ["//scripts:update_nickel_versions"],
     outs = ["versions.bzl.new"],
     cmd = "$(locations //scripts:update_nickel_versions) > $@",
-    tags = ["requires-network", "no-cache"],
+    tags = [
+        "no-cache",
+        "requires-network",
+    ],
+    tools = ["//scripts:update_nickel_versions"],
 )
 
 write_source_file(
