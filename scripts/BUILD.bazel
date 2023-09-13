@@ -14,9 +14,9 @@ py_binary(
     srcs = [
         "update_nickel_versions.py",
     ],
+    visibility = ["//nickel/private:__subpackages__"],
     deps = [
         requirement("httpx"),
         requirement("PyGithub"),
     ],
-    visibility = ["//nickel/private:__subpackages__"]
 )
