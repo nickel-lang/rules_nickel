@@ -50,6 +50,8 @@ Generated from https://github.com/tweag/nickel/releases using `bazel run //nicke
 TOOL_VERSIONS = {''')
 
 for release, assets in nickel_releases.items():
+    if not assets:
+        continue
     print(f'    "{release}": {{')
     for key, asset in assets.items():
         print(f'''\
