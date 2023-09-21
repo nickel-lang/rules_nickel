@@ -41,18 +41,17 @@ nickel = use_extension(
     "nickel",
     dev_dependency = True,
 )
-nickel.toolchain(
-    name = "nickel_1_0_0",
-    nickel_version = "1.0.0",
-)
-nickel.toolchain(
-    name = "nickel_1_1_1",
-    nickel_version = "1.1.1",
-)
-use_repo(nickel, "nickel_1_0_0_toolchains")
-use_repo(nickel, "nickel_1_1_1_toolchains")
+nickel.toolchain(name = "nickel")
+use_repo(nickel, "nickel_toolchains")
 
 register_toolchains(
-    "@nickel_1_1_1_toolchains//:all",
+    "@nickel_toolchains//:all",
     dev_dependency = True,
 )
+
+version_test = use_extension(
+    "//nickel/tests:version_test.bzl",
+    "version_test",
+    dev_dependency = True,
+)
+use_repo(version_test, "all_nickel_versions")

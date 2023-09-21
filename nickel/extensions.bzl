@@ -11,15 +11,17 @@ effectively overriding the default named toolchain due to toolchain resolution p
 """
 
 load(":repositories.bzl", "nickel_register_toolchains")
+load("//nickel/private:versions.bzl", "TOOL_VERSIONS")
 
 _DEFAULT_NAME = "nickel"
+_DEFAULT_VERSION = TOOL_VERSIONS.keys()[0]
 
 nickel_toolchain = tag_class(attrs = {
     "name": attr.string(doc = """\
 Base name for generated repositories, allowing more than one nickel toolchain to be registered.
 Overriding the default is only permitted in the root module.
 """, default = _DEFAULT_NAME),
-    "nickel_version": attr.string(doc = "Explicit version of Nickel.", mandatory = True),
+    "nickel_version": attr.string(doc = "Explicit version of Nickel.", default = _DEFAULT_VERSION),
 })
 
 def _toolchain_extension(module_ctx):
