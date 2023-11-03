@@ -50,7 +50,7 @@ def _nickel_export_impl(ctx):
 
     runfiles = _collect_runfiles(
         ctx,
-        direct_files = [ctx.file.src],
+        direct_files = ctx.files.deps + [ctx.file.src],
         indirect_targets = ctx.attr.deps,
     )
 
