@@ -6,6 +6,8 @@ load("@rules_nickel//nickel:defs.bzl", ...)
 ```
 """
 
+load("@bazel_skylib//lib:versions.bzl", "versions")
+
 def _collect_runfiles(ctx, direct_files, indirect_targets):
     """Builds a runfiles object for the current target.
 
@@ -37,13 +39,22 @@ def _nickel_export_impl(ctx):
     nickel = ctx.toolchains["//nickel:toolchain_type"].nickel_info
 
     args = ctx.actions.args()
-    args.add_all([
-        "export",
-        "--file",
-        ctx.file.src.path,
-        "--format",
-        ctx.attr.format,
-    ])
+    if versions.is_at_least("1.3.0", nickel.version):
+        args.add_all([
+            "export",
+            "--format",
+            ctx.attr.format,
+            ctx.file.src.path,
+        ])
+    else:
+        args.add_all([
+            "export",
+            "--file",
+            ctx.file.src.path,
+            "--format",
+            ctx.attr.format,
+        ])
+
 
     output = ctx.actions.declare_file(ctx.label.name)
     args.add_all(["--output", output.path])

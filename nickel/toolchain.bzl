@@ -1,10 +1,13 @@
 """This module implements the language-specific toolchain rule.
 """
 
+load("//nickel/private:versions.bzl", "TOOL_VERSIONS")
+
 NickelInfo = provider(
     doc = "Information about how to invoke the tool executable.",
     fields = {
         "binary": "Path to the Nickel binary.",
+        "version": "Nickel binary version."
     },
 )
 
@@ -23,6 +26,7 @@ def _nickel_toolchain_impl(ctx):
     )
     nickel_info = NickelInfo(
         binary = binary,
+        version = ctx.attr.nickel_version
     )
 
     # Export all the providers inside our ToolchainInfo
@@ -48,6 +52,7 @@ nickel_toolchain = rule(
             executable = True,
             cfg = "exec",
         ),
+        "nickel_version": attr.string(mandatory = True, values = TOOL_VERSIONS.keys()),
     },
     doc = """Defines a Nickel toolchain.
 
