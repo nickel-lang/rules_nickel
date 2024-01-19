@@ -2,4 +2,4 @@
 .direnv
 .bazelrc.user
 
-/bazel-*
+bazel-*
