@@ -10,13 +10,8 @@ load("//nickel:repositories.bzl", "nickel_register_toolchains", "rules_nickel_de
 rules_nickel_dependencies()
 
 nickel_register_toolchains(
-    name = "nickel_1_0_0",
-    nickel_version = "1.0.0",
-)
-
-nickel_register_toolchains(
-    name = "nickel_1_1_1",
-    nickel_version = "1.1.1",
+    name = "nickel_1_4_0",
+    nickel_version = "1.4.0",
 )
 
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
