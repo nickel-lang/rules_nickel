@@ -3,7 +3,10 @@ load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_file")
 
 nickel_export(
     name = "hello.json.write",
-    src = "hello.ncl",
+    srcs = [
+        "hello.ncl",
+        "hello_klingon.ncl",
+    ],
     format = "json",
     deps = glob(include = ["*.ncl"]),
 )

@@ -39,29 +39,34 @@ def _nickel_export_impl(ctx):
     nickel = ctx.toolchains["//nickel:toolchain_type"].nickel_info
 
     args = ctx.actions.args()
-    if versions.is_at_least("1.3.0", nickel.version):
-        args.add_all([
-            "export",
-            "--format",
-            ctx.attr.format,
-            ctx.file.src.path,
-        ])
-    else:
-        args.add_all([
-            "export",
-            "--file",
-            ctx.file.src.path,
-            "--format",
-            ctx.attr.format,
-        ])
+    args.add_all([
+        "export",
+        "--format",
+        ctx.attr.format,
+    ])
 
+    # The CLI was changed in nickel==1.3.0, therefore we need to branch
+    # based on the nickel toolchain version.
+    # See also:
+    #   https://github.com/tweag/nickel/releases/tag/1.3.0
+    if versions.is_at_least("1.3.0", nickel.version):
+        args.add_all(
+            [f.path for f in ctx.files.srcs],
+        )
+    else:
+        if len(ctx.files.srcs) != 1:
+            fail("Nickel<1.3.0 does not support multiple files argument. Update to new nickel>=1.3.0, or perform the merge explicitly.")
+        args.add_all([
+            "--file",
+            ctx.files.srcs[0].path,
+        ])
 
     output = ctx.actions.declare_file(ctx.label.name)
     args.add_all(["--output", output.path])
 
     runfiles = _collect_runfiles(
         ctx,
-        direct_files = ctx.files.deps + [ctx.file.src],
+        direct_files = ctx.files.deps + ctx.files.srcs,
         indirect_targets = ctx.attr.deps,
     )
 
@@ -81,10 +86,10 @@ def _nickel_export_impl(ctx):
     ]
 
 _nickel_export_attrs = {
-    "src": attr.label(
+    "srcs": attr.label_list(
         doc = "Top-level Nickel file to export from",
         mandatory = True,
-        allow_single_file = [".ncl"],
+        allow_files = [".ncl"],
     ),
     "deps": attr.label_list(
         doc = "Nickel files required by the top-level file",
