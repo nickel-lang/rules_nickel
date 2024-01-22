@@ -12,7 +12,7 @@
       devShells = forAllSystems (pkgs: {
         default = pkgs.mkShell {
           packages = with pkgs; [
-            bazel_6
+            bazelisk
             bazel-buildtools
             pre-commit
             cacert
