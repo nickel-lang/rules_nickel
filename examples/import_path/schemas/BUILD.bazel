@@ -1,0 +1,9 @@
+filegroup(
+    name = "schemas",
+    srcs = [
+        "helm.ncl",
+    ],
+    visibility = [
+        "//:__pkg__",
+    ],
+)

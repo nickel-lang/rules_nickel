@@ -1,0 +1,21 @@
+load("@org_nickel_lang_rules_nickel//nickel:defs.bzl", "nickel_export")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_file")
+
+nickel_export(
+    name = "terraform_helm_apps.json.write",
+    srcs = [
+        "apps.ncl",
+    ],
+    format = "yaml",
+    imports = ["schemas"],
+    deps = [
+        "//schemas",
+    ],
+)
+
+write_source_file(
+    name = "terraform_helm_apps.yaml.update",
+    in_file = "terraform_helm_apps.json.write",
+    out_file = "apps.yaml",
+    suggested_update_target = "//:terraform_helm_apps.yaml.update",
+)

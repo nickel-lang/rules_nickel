@@ -7,6 +7,7 @@ load("@rules_nickel//nickel:defs.bzl", ...)
 """
 
 load("@bazel_skylib//lib:versions.bzl", "versions")
+load("@bazel_skylib//lib:paths.bzl", "paths")
 
 def _collect_runfiles(ctx, direct_files, indirect_targets):
     """Builds a runfiles object for the current target.
@@ -35,6 +36,38 @@ def _collect_runfiles(ctx, direct_files, indirect_targets):
         ),
     )
 
+def _get_imports(ctx):
+    """Gets the imports from a rule's `imports` attribute.
+
+    Args:
+        ctx: Rule ctx.
+
+    See Also:
+        https://github.com/bazelbuild/rules_python/blob/6695fe1d74d4d13f676213663ff4ab22b3ae2624/python/private/common/common_bazel.bzl#L70C9-L70C9
+
+    Returns:
+        List of strings.
+    """
+    result = []
+    for import_str in ctx.attr.imports:
+        # Even though `ctx.expand_make_variables` is marked as deprecated,
+        # it seems that there is open discussion with correct workaround.
+        # See also:
+        #   https://github.com/bazelbuild/bazel/issues/5859
+        import_str = ctx.expand_make_variables("imports", import_str, {})
+        if import_str.startswith("/"):
+            continue
+
+        # To prevent "escaping" out of the runfiles tree, we normalize
+        # the path and ensure it doesn't have up-level references.
+        import_path = paths.normalize(import_str)
+        if import_path.startswith("../") or import_path == "..":
+            fail("Path '{}' references a path above the execution root".format(
+                import_str,
+            ))
+        result.append(import_path)
+    return result
+
 def _nickel_export_impl(ctx):
     nickel = ctx.toolchains["//nickel:toolchain_type"].nickel_info
 
@@ -45,8 +78,20 @@ def _nickel_export_impl(ctx):
         ctx.attr.format,
     ])
 
-    # The CLI was changed in nickel==1.3.0, therefore we need to branch
-    # based on the nickel toolchain version.
+    # Import path support was added in nickel==1.4.0.
+    # See also:
+    #   https://github.com/tweag/nickel/releases/tag/1.4.0
+    if len(ctx.attr.imports) != 0:
+        if versions.is_at_least("1.4.0", nickel.version):
+            for import_path in _get_imports(ctx):
+                args.add_all([
+                    "--import-path",
+                    import_path
+                ])
+        else:
+            fail("Nickel<1.4.0 does not support import path specification. Update to new nickel>=1.4.0.")
+
+    # The CLI was changed in nickel==1.3.0.
     # See also:
     #   https://github.com/tweag/nickel/releases/tag/1.3.0
     if versions.is_at_least("1.3.0", nickel.version):
@@ -90,6 +135,16 @@ _nickel_export_attrs = {
         doc = "Top-level Nickel file to export from",
         mandatory = True,
         allow_files = [".ncl"],
+    ),
+    "imports": attr.string_list(
+        doc = """
+List of import directories to be passed to `--import-path` .
+
+Subject to "Make variable" substitution. The strings are repo-runfiles-root relative.
+
+Absolute paths (paths that start with `/`) and paths that references a path
+above the execution root are not allowed and will result in an error.
+""",
     ),
     "deps": attr.label_list(
         doc = "Nickel files required by the top-level file",
