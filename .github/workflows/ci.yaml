@@ -24,7 +24,8 @@ jobs:
           ".",
           "e2e/smoke_nickel_1_1_1",
           "e2e/smoke_nickel_1_4_0",
-          "examples/hello_world"
+          "examples/hello_world",
+          "examples/import_path"
         ]
       exclude: |
         [

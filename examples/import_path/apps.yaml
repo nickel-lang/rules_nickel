@@ -1,0 +1,7 @@
+argo_cd:
+  chart: argo-cd
+  create_namespace: true
+  name: argo-cd
+  namespace: argo-cd
+  repository: https://argoproj.github.io/argo-helm
+  version: 5.53.1
