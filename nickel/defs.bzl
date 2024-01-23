@@ -147,7 +147,7 @@ above the execution root are not allowed and will result in an error.
 """,
     ),
     "deps": attr.label_list(
-        doc = "Nickel files required by the top-level file",
+        doc = "Source files required by the top-level files",
         allow_files = [
             ".json",
             ".ncl",
