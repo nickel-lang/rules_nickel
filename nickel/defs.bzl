@@ -86,7 +86,7 @@ def _nickel_export_impl(ctx):
             for import_path in _get_imports(ctx):
                 args.add_all([
                     "--import-path",
-                    import_path
+                    import_path,
                 ])
         else:
             fail("Nickel<1.4.0 does not support import path specification. Update to new nickel>=1.4.0.")
@@ -147,8 +147,15 @@ above the execution root are not allowed and will result in an error.
 """,
     ),
     "deps": attr.label_list(
-        doc = "Nickel files required by the top-level file",
-        allow_files = [".ncl"],
+        doc = "Source files required by the top-level files",
+        allow_files = [
+            ".json",
+            ".ncl",
+            ".toml",
+            ".yaml",
+            ".yml",
+            ".txt",
+        ],
     ),
     "format": attr.string(
         doc = "Output format",
