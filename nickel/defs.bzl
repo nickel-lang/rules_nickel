@@ -154,6 +154,7 @@ above the execution root are not allowed and will result in an error.
             ".toml",
             ".yaml",
             ".yml",
+            ".txt",
         ],
     ),
     "format": attr.string(
