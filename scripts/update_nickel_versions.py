@@ -1,7 +1,8 @@
 import httpx
 import hashlib
 import base64
-from github import Github
+import os
+from github import Github, Auth
 
 ASSET_NAMES = [ "nickel-x86_64-linux", "nickel-arm64-linux" ]
 
@@ -33,7 +34,13 @@ def hash_assets(assets):
 
     return r
 
-releases = Github().get_repo("tweag/nickel").get_releases()
+token = os.environ.get('GITHUB_TOKEN')
+if token:
+    github = Github(auth=Auth.Token(token))
+else:
+    github = Github()
+
+releases = github.get_repo("tweag/nickel").get_releases()
 nickel_urls = collect_asset_urls(releases)
 
 nickel_releases = {}
