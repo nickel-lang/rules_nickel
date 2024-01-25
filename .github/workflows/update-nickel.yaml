@@ -1,0 +1,33 @@
+name: Update Nickel Releases
+
+# Controls when the action will run.
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Mount bazel caches
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/bazel
+          key: bazel-cache-${{ hashFiles('**/BUILD.bazel', '**/*.bzl', 'WORKSPACE') }}
+          restore-keys: bazel-cache-
+      - name: bazel run //nickel/private:versions.update
+        env:
+          # Bazelisk will download bazel to here.
+          XDG_CACHE_HOME: ~/.cache/bazel-repo
+        run: bazel --bazelrc=${{ github.workspace }}/.github/workflows/ci.bazelrc --bazelrc=.bazelrc run //nickel/private:versions.update
+      - name: Create a PR
+        uses: peter-evans/create-pull-request@v5
+        with:
+          add-paths: nickel/private/versions.bzl
+          branch: update-nickel-versions
+          commit-message: Update Nickel releases
+          title: Update Nickel releases
+          body: |
+            Generated automatically by [update-nickel workflow](.github/workflows/update-nickel.yaml)
