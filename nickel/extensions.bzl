@@ -22,6 +22,7 @@ Base name for generated repositories, allowing more than one nickel toolchain to
 Overriding the default is only permitted in the root module.
 """, default = _DEFAULT_NAME),
     "nickel_version": attr.string(doc = "Explicit version of Nickel.", default = _DEFAULT_VERSION),
+    "nickel_opts": attr.string_list(doc = "Nickel root CLI options."),
 })
 
 def _toolchain_extension(module_ctx):
@@ -35,20 +36,28 @@ def _toolchain_extension(module_ctx):
                 """)
             if toolchain.name not in registrations.keys():
                 registrations[toolchain.name] = []
-            registrations[toolchain.name].append(toolchain.nickel_version)
-    for name, versions in registrations.items():
-        if len(versions) > 1:
+            registrations[toolchain.name].append(
+                {
+                    "nickel_version": toolchain.nickel_version,
+                    "nickel_opts": toolchain.nickel_opts,
+                }
+            )
+    for name, records in registrations.items():
+        if len(records) > 1:
+            versions = [record["nickel_version"] for record in records]
             # TODO: should be semver-aware, using MVS
-            selected = sorted(versions, reverse = True)[0]
+            selected_index = versions.index(max(versions))
 
             # buildifier: disable=print
-            print("NOTE: Nickel toolchain {} has multiple versions {}, selected {}".format(name, versions, selected))
+            print("NOTE: Nickel toolchain {} has multiple records {}, selected {}".format(name, records, records[selected_index]))
         else:
-            selected = versions[0]
+            selected_index = 0
 
+        selected = records[selected_index]
         nickel_register_toolchains(
             name = name,
-            nickel_version = selected,
+            nickel_version = selected["nickel_version"],
+            nickel_opts = selected["nickel_opts"],
             register = False,
         )
 

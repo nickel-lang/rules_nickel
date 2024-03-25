@@ -10,6 +10,13 @@ nickel = use_extension("@org_nickel_lang_rules_nickel//nickel:extensions.bzl", "
 nickel.toolchain(
     name = "nickel",
     nickel_version = "1.4.0",
+    nickel_opts = ["--color=never"]
+)
+
+nickel.toolchain(
+    name = "nickel",
+    nickel_version = "1.4.1",
+    nickel_opts = ["--color=always"]
 )
 use_repo(nickel, "nickel_toolchains")
 

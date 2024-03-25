@@ -1202,7 +1202,7 @@
   "moduleExtensions": {
     "//nickel:extensions.bzl%nickel": {
       "general": {
-        "bzlTransitiveDigest": "BBRMbvk2mh6P6gyPyqH9J4mqQRpNk53+5L2Pztlc5Z4=",
+        "bzlTransitiveDigest": "yxkCs0BzhEuwrsH8X7xVtmQ2ePLlNeHNEzGPtiduDqI=",
         "accumulatedFileDigests": {},
         "envVariables": {},
         "generatedRepoSpecs": {
@@ -1212,6 +1212,7 @@
             "attributes": {
               "name": "_main~nickel~nickel_arm64-linux",
               "nickel_version": "1.4.0",
+              "nickel_opts": [],
               "platform": "arm64-linux"
             }
           },
@@ -1229,6 +1230,7 @@
             "attributes": {
               "name": "_main~nickel~nickel_x86_64-linux",
               "nickel_version": "1.4.0",
+              "nickel_opts": [],
               "platform": "x86_64-linux"
             }
           }
@@ -1244,7 +1246,7 @@
     },
     "//nickel/tests:version_test.bzl%version_test": {
       "general": {
-        "bzlTransitiveDigest": "Y2FrOpMfAINNdsOqT3mVEJMyolHVPE+SZ8fuom1zVkg=",
+        "bzlTransitiveDigest": "YON5gagY492vSsrlmABnzAmeM50wz0QqZkvLgmnv4UA=",
         "accumulatedFileDigests": {},
         "envVariables": {},
         "generatedRepoSpecs": {

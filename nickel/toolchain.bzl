@@ -7,7 +7,8 @@ NickelInfo = provider(
     doc = "Information about how to invoke the tool executable.",
     fields = {
         "binary": "Path to the Nickel binary.",
-        "version": "Nickel binary version."
+        "version": "Nickel binary version.",
+        "opts": "Nickel root CLI options.",
     },
 )
 
@@ -26,7 +27,8 @@ def _nickel_toolchain_impl(ctx):
     )
     nickel_info = NickelInfo(
         binary = binary,
-        version = ctx.attr.nickel_version
+        version = ctx.attr.nickel_version,
+        opts = ctx.attr.nickel_opts,
     )
 
     # Export all the providers inside our ToolchainInfo
@@ -52,7 +54,13 @@ nickel_toolchain = rule(
             executable = True,
             cfg = "exec",
         ),
-        "nickel_version": attr.string(mandatory = True, values = TOOL_VERSIONS.keys()),
+        "nickel_version": attr.string(
+            doc = "Nickel binary version.",
+            mandatory = True,
+            values = TOOL_VERSIONS.keys()),
+        "nickel_opts": attr.string_list(
+            doc = "Nickel root CLI options."
+        ),
     },
     doc = """Defines a Nickel toolchain.
 
