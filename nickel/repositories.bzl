@@ -72,7 +72,7 @@ nickel_repositories = repository_rule(
 )
 
 # Wrapper macro around everything above, this is the primary API
-def nickel_register_toolchains(name, nickel_version, nickel_opts, register = True, **kwargs):
+def nickel_register_toolchains(name, nickel_version, nickel_opts = [], register = True, **kwargs):
     """Convenience macro for users which does typical setup.
 
     - create a repository for each built-in platform like "nickel-x86_64-linux" -
