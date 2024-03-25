@@ -83,7 +83,7 @@ def nickel_register_toolchains(name, nickel_version, nickel_opts = [], register 
     Args:
         name: base name for all created repos, like "nickel_1_0_0"
         nickel_version: the specific Nickel version to use, e.g. "1.0.0"
-        nickel_ops: the CLI Nickel options to use, e.g. "--color=always"
+        nickel_opts: the CLI Nickel options to use, e.g. "--color=always"
         register: whether to call through to native.register_toolchains.
             Should be True for WORKSPACE users, but false when used under bzlmod extension
         **kwargs: passed to each node_repositories call
