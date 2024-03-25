@@ -1202,7 +1202,7 @@
   "moduleExtensions": {
     "//nickel:extensions.bzl%nickel": {
       "general": {
-        "bzlTransitiveDigest": "xjjW9j6sjqkUekJ6bGf5uQUjCf9U1Ery/TwsXNpC7ZQ=",
+        "bzlTransitiveDigest": "yxkCs0BzhEuwrsH8X7xVtmQ2ePLlNeHNEzGPtiduDqI=",
         "accumulatedFileDigests": {},
         "envVariables": {},
         "generatedRepoSpecs": {
@@ -1246,7 +1246,7 @@
     },
     "//nickel/tests:version_test.bzl%version_test": {
       "general": {
-        "bzlTransitiveDigest": "W9z9chBgE8xQ+I+/NQYDuzo4BDEgqnm2RdXcXxp5P0g=",
+        "bzlTransitiveDigest": "YON5gagY492vSsrlmABnzAmeM50wz0QqZkvLgmnv4UA=",
         "accumulatedFileDigests": {},
         "envVariables": {},
         "generatedRepoSpecs": {
