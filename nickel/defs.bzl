@@ -72,7 +72,7 @@ def _nickel_export_impl(ctx):
     nickel = ctx.toolchains["//nickel:toolchain_type"].nickel_info
 
     args = ctx.actions.args()
-    args.add_all([
+    args.add_all(nickel.opts + [
         "export",
         "--format",
         ctx.attr.format,
