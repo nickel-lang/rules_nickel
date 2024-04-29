@@ -1202,7 +1202,7 @@
   "moduleExtensions": {
     "//nickel:extensions.bzl%nickel": {
       "general": {
-        "bzlTransitiveDigest": "yxkCs0BzhEuwrsH8X7xVtmQ2ePLlNeHNEzGPtiduDqI=",
+        "bzlTransitiveDigest": "t7aaSBNzNHruIvHV/nvWAnXqK1Gl9QwVOvpXDfwjIu8=",
         "accumulatedFileDigests": {},
         "envVariables": {},
         "generatedRepoSpecs": {
