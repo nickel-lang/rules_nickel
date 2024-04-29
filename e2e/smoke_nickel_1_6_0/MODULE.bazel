@@ -1,0 +1,17 @@
+bazel_dep(name = "bazel_skylib", version = "1.4.2")
+
+local_path_override(
+    module_name = "org_nickel_lang_rules_nickel",
+    path = "../..",
+)
+
+bazel_dep(name = "org_nickel_lang_rules_nickel", version = "0.0.0")
+
+nickel = use_extension("@org_nickel_lang_rules_nickel//nickel:extensions.bzl", "nickel")
+nickel.toolchain(
+    name = "nickel",
+    nickel_version = "1.6.0",
+)
+use_repo(nickel, "nickel_toolchains")
+
+register_toolchains("@nickel_toolchains//:all")
