@@ -5,6 +5,16 @@ Generated from https://github.com/tweag/nickel/releases using `bazel run //nicke
 """
 
 TOOL_VERSIONS = {
+    "1.6.0": {
+        "nickel-arm64-linux": {
+            "url": "https://github.com/tweag/nickel/releases/download/1.6.0/nickel-arm64-linux",
+            "hash": "sha384-XDxRQhpnxbmtOHhsbXLrOou9YRGBb3KjBMlX15feo4DbRNQ8fV+55SSBKDYuBCiK",
+        },
+        "nickel-x86_64-linux": {
+            "url": "https://github.com/tweag/nickel/releases/download/1.6.0/nickel-x86_64-linux",
+            "hash": "sha384-Snzqxl6gWVNBJSxGE2pFr+c86jmgXrdnbnqd53l8i6r13CTouOY+ZiFP3TYlK4Ya",
+        },
+    },
     "1.5.0": {
         "nickel-arm64-linux": {
             "url": "https://github.com/tweag/nickel/releases/download/1.5.0/nickel-arm64-linux",
