@@ -1202,7 +1202,7 @@
   "moduleExtensions": {
     "//nickel:extensions.bzl%nickel": {
       "general": {
-        "bzlTransitiveDigest": "t7aaSBNzNHruIvHV/nvWAnXqK1Gl9QwVOvpXDfwjIu8=",
+        "bzlTransitiveDigest": "VVVqhdsy4uxQV2C/Ldnj6c+RbYkFqyPIwY6UOFT0dB8=",
         "accumulatedFileDigests": {},
         "envVariables": {},
         "generatedRepoSpecs": {
@@ -2422,7 +2422,7 @@
       "general": {
         "bzlTransitiveDigest": "qBo/kpl3EBLyQov1fGDQ/BXhswRgI69Clc2ek1w+bR0=",
         "accumulatedFileDigests": {
-          "@@//scripts:requirements_lock.txt": "33653ec8132efd8bd05b83a415155a3467657e2dff3044a8d8ad92a7fff6588b"
+          "@@//scripts:requirements_lock.txt": "df1dbff07a209b22500a18eb490c8a0dd86a2dc18dde05ee4ddfb71a6ced0510"
         },
         "envVariables": {},
         "generatedRepoSpecs": {
@@ -2876,7 +2876,7 @@
             "ruleClassName": "whl_library",
             "attributes": {
               "name": "rules_python~0.25.0~pip~pip_311_certifi",
-              "requirement": "certifi==2023.7.22     --hash=sha256:539cc1d13202e33ca466e88b2807e29f4c13049d6d87031a3c110744495cb082     --hash=sha256:92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9",
+              "requirement": "certifi==2024.7.4     --hash=sha256:5a1e7645bc0ec61a09e26c36f6106dd4cf40c6db3a1fb6352b0244e7fb057c7b     --hash=sha256:c198e21b1289c2ab85ee4e67bb4b4ef3ead0892059901a8d5b622f24a1101e90",
               "repo": "pip_311",
               "repo_prefix": "pip_311_",
               "python_interpreter": "",
