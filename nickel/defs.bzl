@@ -80,7 +80,7 @@ def _nickel_export_impl(ctx):
 
     # Import path support was added in nickel==1.4.0.
     # See also:
-    #   https://github.com/tweag/nickel/releases/tag/1.4.0
+    #   https://github.com/nickel-lang/nickel/releases/tag/1.4.0
     if len(ctx.attr.imports) != 0:
         if versions.is_at_least("1.4.0", nickel.version):
             for import_path in _get_imports(ctx):
@@ -93,7 +93,7 @@ def _nickel_export_impl(ctx):
 
     # The CLI was changed in nickel==1.3.0.
     # See also:
-    #   https://github.com/tweag/nickel/releases/tag/1.3.0
+    #   https://github.com/nickel-lang/nickel/releases/tag/1.3.0
     if versions.is_at_least("1.3.0", nickel.version):
         args.add_all(
             [f.path for f in ctx.files.srcs],

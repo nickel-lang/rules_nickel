@@ -40,7 +40,7 @@ if token:
 else:
     github = Github()
 
-releases = github.get_repo("tweag/nickel").get_releases()
+releases = github.get_repo("nickel-lang/nickel").get_releases()
 nickel_urls = collect_asset_urls(releases)
 
 nickel_releases = {}
@@ -51,7 +51,7 @@ for release, assets in nickel_urls.items():
 print('''
 """DO NOT EDIT
 
-Generated from https://github.com/tweag/nickel/releases using `bazel run //nickel/private:versions.update`
+Generated from https://github.com/nickel-lang/nickel/releases using `bazel run //nickel/private:versions.update`
 """
 
 TOOL_VERSIONS = {''')
