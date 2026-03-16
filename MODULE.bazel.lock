@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 6,
-  "moduleFileHash": "50482612bb6bd0b2004b32c0fa5c9dd2a9008d75dea28d2bdae9b8898b57e0da",
+  "moduleFileHash": "4ab1ff986cf31d9486a601ccb7a8568b61c099aa3283f9a7ffb909477bb6fe43",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -109,7 +109,7 @@
               "tagName": "toolchain",
               "attributeValues": {
                 "name": "nickel",
-                "nickel_version": "1.4.0"
+                "nickel_version": "1.16.0"
               },
               "devDependency": true,
               "location": {
@@ -1268,7 +1268,7 @@
   "moduleExtensions": {
     "//nickel:extensions.bzl%nickel": {
       "general": {
-        "bzlTransitiveDigest": "S0rjI2MoE2Vr3jd4bOZlotz8GGmE27ghNW/b0Y1ezM0=",
+        "bzlTransitiveDigest": "/sJxYiyOjfJ1rMIC9aKA0r3nEqT7/YCWvfD1Wzz67EE=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -1277,7 +1277,7 @@
             "bzlFile": "@@//nickel:repositories.bzl",
             "ruleClassName": "nickel_repositories",
             "attributes": {
-              "nickel_version": "1.4.0",
+              "nickel_version": "1.16.0",
               "nickel_opts": [],
               "platform": "arm64-linux"
             }
@@ -1293,7 +1293,7 @@
             "bzlFile": "@@//nickel:repositories.bzl",
             "ruleClassName": "nickel_repositories",
             "attributes": {
-              "nickel_version": "1.4.0",
+              "nickel_version": "1.16.0",
               "nickel_opts": [],
               "platform": "x86_64-linux"
             }
@@ -1306,6 +1306,22 @@
             "bazel_tools"
           ]
         ]
+      }
+    },
+    "//nickel/tests:version_test.bzl%version_test": {
+      "general": {
+        "bzlTransitiveDigest": "FwwjWM9+mquZSz/+akunhIWflwhHbLBfW+U7slqS9nM=",
+        "recordedFileInputs": {},
+        "recordedDirentsInputs": {},
+        "envVariables": {},
+        "generatedRepoSpecs": {
+          "all_nickel_versions": {
+            "bzlFile": "@@//nickel/tests:version_test.bzl",
+            "ruleClassName": "all_versions_repository",
+            "attributes": {}
+          }
+        },
+        "recordedRepoMappingEntries": []
       }
     },
     "@@apple_support~//crosstool:setup.bzl%apple_cc_configure_extension": {
@@ -2362,7 +2378,7 @@
     },
     "@@rules_python~//python/extensions:pip.bzl%pip": {
       "general": {
-        "bzlTransitiveDigest": "m29uOHWlJttPB/ut4vbCe/3PgKjCMVgLHotM7pVOivU=",
+        "bzlTransitiveDigest": "P/tUPOGXl3y58AsRQxMvcrL6bOB0ln7b4h83SHukw7w=",
         "recordedFileInputs": {
           "@@//scripts/requirements_lock.txt": "df1dbff07a209b22500a18eb490c8a0dd86a2dc18dde05ee4ddfb71a6ced0510"
         },

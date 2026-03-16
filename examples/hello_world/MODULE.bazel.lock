@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 6,
-  "moduleFileHash": "68e374874b03c128808b6a8cf583cb128e49e585c786f9db7d27de67ef05f0a4",
+  "moduleFileHash": "997ef982706cd03a03d8bbd0045cee7c258446125e5dc7cf18cd06d908f1fc7a",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -14,7 +14,7 @@
   },
   "localOverrideHashes": {
     "bazel_tools": "1ae69322ac3823527337acf02016e8ee95813d8d356f47060255b8956fa642f0",
-    "org_nickel_lang_rules_nickel": "50482612bb6bd0b2004b32c0fa5c9dd2a9008d75dea28d2bdae9b8898b57e0da"
+    "org_nickel_lang_rules_nickel": "4ab1ff986cf31d9486a601ccb7a8568b61c099aa3283f9a7ffb909477bb6fe43"
   },
   "moduleDepGraph": {
     "<root>": {
@@ -45,23 +45,7 @@
               "tagName": "toolchain",
               "attributeValues": {
                 "name": "nickel",
-                "nickel_version": "1.4.0",
-                "nickel_opts": [
-                  "--color=never"
-                ]
-              },
-              "devDependency": false,
-              "location": {
-                "file": "@@//:MODULE.bazel",
-                "line": 10,
-                "column": 17
-              }
-            },
-            {
-              "tagName": "toolchain",
-              "attributeValues": {
-                "name": "nickel",
-                "nickel_version": "1.4.1",
+                "nickel_version": "1.16.0",
                 "nickel_opts": [
                   "--color=always"
                 ]
@@ -1194,7 +1178,7 @@
     },
     "@@aspect_bazel_lib~//lib:extensions.bzl%ext": {
       "general": {
-        "bzlTransitiveDigest": "GkNnldKmYPecXzTJDJtWsC7mS4xtHVh7LFJsw276ijY=",
+        "bzlTransitiveDigest": "8TwHxvuBZcDHN32zmnpswSg+a6QwRrng72r6W2rfp1c=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -1570,7 +1554,7 @@
     },
     "@@org_nickel_lang_rules_nickel~//nickel:extensions.bzl%nickel": {
       "general": {
-        "bzlTransitiveDigest": "1BZXxJYJ64veXp/eF26UwBNnyLyMtt/0+BPMre0aOSY=",
+        "bzlTransitiveDigest": "/sJxYiyOjfJ1rMIC9aKA0r3nEqT7/YCWvfD1Wzz67EE=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -1579,7 +1563,7 @@
             "bzlFile": "@@org_nickel_lang_rules_nickel~//nickel:repositories.bzl",
             "ruleClassName": "nickel_repositories",
             "attributes": {
-              "nickel_version": "1.4.1",
+              "nickel_version": "1.16.0",
               "nickel_opts": [
                 "--color=always"
               ],
@@ -1597,7 +1581,7 @@
             "bzlFile": "@@org_nickel_lang_rules_nickel~//nickel:repositories.bzl",
             "ruleClassName": "nickel_repositories",
             "attributes": {
-              "nickel_version": "1.4.1",
+              "nickel_version": "1.16.0",
               "nickel_opts": [
                 "--color=always"
               ],
@@ -1616,7 +1600,7 @@
     },
     "@@rules_java~//java:extensions.bzl%toolchains": {
       "general": {
-        "bzlTransitiveDigest": "tJHbmWnq7m+9eUBnUdv7jZziQ26FmcGL9C5/hU3Q9UQ=",
+        "bzlTransitiveDigest": "0N5b5J9fUzo0sgvH4F3kIEaeXunz4Wy2/UtSFV/eXUY=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
