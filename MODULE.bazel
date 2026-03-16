@@ -43,7 +43,7 @@ nickel = use_extension(
 )
 nickel.toolchain(
     name = "nickel",
-    nickel_version = "1.4.0",
+    nickel_version = "1.16.0",
 )
 use_repo(nickel, "nickel_toolchains")
 
