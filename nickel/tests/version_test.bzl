@@ -1,7 +1,8 @@
 """Testing that Nickel versions are what they claim to be"""
 
-load("//nickel/private:versions.bzl", "TOOL_VERSIONS")
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
 load("//nickel/private:toolchains_repo.bzl", "PLATFORMS")
+load("//nickel/private:versions.bzl", "TOOL_VERSIONS")
 
 def _version_pattern(version):
     if version == "1.0.0":
@@ -56,7 +57,7 @@ def version_test_rules(name):
             args[":version_test_{}".format(platform)] = ["$(location {})".format(nickel_target), _version_pattern(version)]
 
         version_underscore = version.replace(".", "_")
-        native.sh_test(
+        sh_test(
             name = "{}_{}_version_test".format(name, version_underscore),
             data = select(tools),
             args = select(args),
